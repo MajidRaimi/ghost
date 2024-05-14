@@ -1,0 +1,22 @@
+<link rel="stylesheet" type="text/css" href="{{asset "css/hero.css"}}" />
+<link rel="stylesheet" type="text/css" href="{{asset "css/form-page.css"}}" />
+
+{{!< default}}
+
+<main>
+    {{#post}}
+        <section class="slider-outer{{#unless feature_image}} no-hero-image{{/unless}}">
+            <custom-slider class="slider wide-container swiper" data-allow-touch-move="false">
+                {{#if feature_image}}
+                    <div class="circle-overlay"></div>
+                {{/if}}
+                <div class="swiper-wrapper">
+                    {{> "components/form-hero" type="contact"}}
+                </div>
+            </custom-slider>
+            {{#if feature_image}}
+                <div class="hero-background{{#unless @custom.use_rounded_corners_on_desktop_background_overlays}} no-border-radius{{/unless}}"></div>
+            {{/if}}
+        </section>
+    {{/post}}
+</main>

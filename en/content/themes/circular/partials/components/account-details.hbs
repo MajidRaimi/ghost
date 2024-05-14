@@ -1,0 +1,51 @@
+<div class="account-text-content{{#if @custom.use_page_load_animations}} vertical-animation{{/if}}">
+    {{#foreach @member.subscriptions}}
+        <div class="account-details-outer">
+            <div class="account-details">
+                <div class="account-detail">
+                    <p><b>{{t "E-mail"}}:</b> {{@member.email}}</p>
+                </div>
+                <div class="account-detail">
+                    <p><b>{{t "Plan"}}:</b> {{price plan}}/{{plan.interval}}</p>
+                </div>
+                <div class="account-detail">
+                    <p><b>{{t "Card"}}:</b> **** **** **** {{default_payment_card_last4}}</p>
+                </div>
+                <div class="account-detail">
+                    <p><b>{{#if cancel_at_period_end}}{{t "Expires"}}{{else}}{{t "Billing date"}}{{/if}}:</b> {{date current_period_end}}</p>
+                </div>
+            </div>
+
+            {{#if cancel_at_period_end}}
+                <div class="will-expire-text">
+                    <b>{{t "Your subscription will expire on"}} {{date current_period_end format="DD MMM YYYY"}}.</b> {{t "If you change your mind in the mean time you can turn auto-renew back on to continue your subscription."}}
+                </div>
+            {{/if}}
+
+            <div class="account-details-buttons">
+                {{#if @last}}
+                    <a class="account-detail-button" href="javascript:" data-portal="account">{{t "Account details"}}</a>
+                {{/if}}
+                {{cancel_link 
+                    class="account-detail-button"
+                    errorClass="cancel-subscription-error"
+                    cancelLabel=(t 'Cancel subscription')
+                    continueLabel=(t 'Continue subscription')
+                }}
+            </div>
+        </div>
+    {{/foreach}}
+
+    {{#unless @member.paid}}
+        <div class="account-details-buttons details-buttons-for-free">
+            <a class="account-detail-button" href="javascript:" data-portal="account">{{t "Account details"}}</a>
+        </div>
+    {{/unless}}
+
+    <div class="account-logout-button-wrapper">
+        <a class="button" href="javascript:" data-members-signout>
+            {{t "Log out"}}
+            <div class="button-shadow"></div>
+        </a>
+    </div>
+</div>

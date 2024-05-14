@@ -1,0 +1,62 @@
+<link rel="stylesheet" type="text/css" href="{{asset "css/navbar.css"}}" />
+
+<header class="header{{#if @custom.use_page_load_animations}} vertical-animation{{/if}}">
+    <div class="wide-container navbar-inner">
+        <div class="logo-wrapper">
+            <a class="logo" href="{{@site.url}}">
+                {{#if @site.logo}}
+                    <img class="dark-logo{{#if @custom.light_logo}} hide-dark-logo{{/if}}" src="{{@site.logo}}" alt="{{@site.title}}">
+                    {{#if @custom.light_logo}}
+                        <img class="light-logo" src="{{img_url @custom.light_logo size="large"}}" alt="{{@site.title}}">
+                    {{/if}}
+                {{else}}
+                    <div class="medium-text">
+                        {{@site.title}}
+                    </div>                       
+                {{/if}}
+            </a>
+        </div>
+        <div class="mobile-navbar-icons">
+            <button class="search-button unstyled-button" aria-label="Search button" data-ghost-search>
+                <div class="search-icon">
+                    {{> "icons/search-icon" }}
+                </div>
+            </button>
+            <button class="menu-button unstyled-button" aria-label="Menu button">
+                <div class="menu-line first-line"></div>
+                <div class="menu-line mobile-line"></div>
+                <div class="menu-line second-line"></div>
+            </button>
+        </div>
+        <div class="navbar-links-outer">
+            <div class="navbar-links-inner">
+                {{navigation}}
+
+                {{!-- <div class="search-wrapper">
+                    <button class="search-button unstyled-button" aria-label="Search button" data-ghost-search>
+                        <div class="search-icon">
+                            {{> "icons/search-icon" }}
+                        </div>
+                        {{t "Search"}}
+                    </button>
+                </div> --}}
+
+                {{!-- {{#if @site.members_enabled}}
+                    <div class="acc-button-wrapper">
+                        {{#unless @member}}
+                            <a {{#if @custom.use_custom_account_pages}}href="{{@site.url}}/signup/"{{else}}href="javascript:" data-portal="signup"{{/if}} class="button">
+                                {{t "Join us"}}
+                                <div class="button-shadow"></div>
+                            </a>
+                        {{else}}
+                            <a {{#if @custom.use_custom_account_pages}}href="{{@site.url}}/account/"{{else}}href="javascript:" data-portal="account"{{/if}} class="button">
+                                {{t "Account"}}
+                                <div class="button-shadow"></div>
+                            </a>
+                        {{/unless}} 
+                    </div>
+                {{/if}} --}}
+            </div>
+        </div>
+    </div>
+</header>

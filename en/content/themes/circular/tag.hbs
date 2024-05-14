@@ -1,0 +1,36 @@
+<link rel="stylesheet" type="text/css" href="{{asset "css/hero.css"}}" />
+<link rel="stylesheet" type="text/css" href="{{asset "css/hero-secondary.css"}}" />
+<link rel="stylesheet" type="text/css" href="{{asset "css/card.css"}}" />
+
+{{!< default}}
+
+<main>
+    {{#tag}}
+        {{#if @custom.use_slider_hero_section_in_secondary_pages}}
+            {{#get "posts" include="tags" filter="tags:{{slug}}+id:-{{id}}" limit="all"}}
+                {{#if posts}}
+                    {{> "components/slider" items=posts}}
+                {{/if}}
+            {{/get}}
+        {{else}}
+            {{> "components/hero" type="tag" title=name}}
+        {{/if}}
+    {{/tag}}
+    
+     {{#unless @custom.use_slider_hero_section_in_secondary_pages}}
+        <section class="light-background latest-posts section-padding no-padding-bottom{{#if @custom.use_page_load_animations}} hidden-animation{{/if}}">
+            <div class="wide-container">
+                <div class="section-header">
+                    <div class="subtitle-text">{{t "Latest posts"}}</div>
+                    <div class="subtitle-line"></div>
+                </div>
+                <div class="grid pagination-grid">
+                    {{#foreach posts}}
+                        {{> "components/card" }}
+                    {{/foreach}}
+                </div>
+                {{pagination}}  
+            </div>        
+        </section> 
+    {{/unless}}
+</main>

@@ -1,0 +1,50 @@
+<div class="card" data-date="{{date published_at format='MMM YYYY'}}">
+    <div class="card-top">
+        <small class="italic number-class">01</small>
+        <small class="italic flex-center">
+        {{#unless access}}
+            <div class="restricted-access-icon">
+                {{> "icons/lock-icon" }}
+            </div>
+            <div class="circle-separator"></div>
+        {{/unless}}
+        {{#primary_tag}}         
+            <a href="{{this.url}}" class="link-hover-animation flex">                                    
+                {{this.name}}                                      
+            </a>
+        {{/primary_tag}}
+        </small>
+    </div>
+
+    <a href="{{url}}" class="grid-item-image-link scale-in" aria-label="{{title}}">
+        {{#if feature_image}}                   
+            <figure>
+                <img
+                    srcset="{{img_url feature_image size="s"}} 300w,
+                            {{img_url feature_image size="m"}} 720w,
+                            {{img_url feature_image size="l"}} 960w,
+                            {{img_url feature_image size="xl"}} 1200w,
+                            {{img_url feature_image size="xxl"}} 2000w"
+                    src="{{img_url feature_image size="xl"}}"
+                    alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}"
+                >
+            </figure>                   
+        {{else}}
+            <div class="placeholder">
+                {{> "icons/placeholder" }}
+            </div>                  
+        {{/if}}
+    </a>
+
+    <div class="card-item-text-wrapper">
+        <a href="{{url}}" class="medium-text">
+            {{title}}
+        </a>
+        <div class="card-item-paragraph-wrapper">
+            <p class="three-lines">{{excerpt}}</p>
+        </div>
+        <small class="main-card-authors italic">
+            
+        </small>
+    </div>
+</div>

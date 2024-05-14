@@ -1,0 +1,195 @@
+{
+    "name": "circular",
+    "description": "Discover Circular, an exquisite Ghost theme meticulously designed with seamless page transitions and dynamic sliders. Elevate your website's aesthetic with captivating circle images, ensuring a truly captivating user experience.",
+    "demo": "https://circular.kusa-projects.com/",
+    "version": "2.0.2",
+    "private": true,
+    "engines": {
+        "ghost": ">=5.0.0"
+    },
+    "author": {
+        "name": "KUSA Projects",
+        "email": "kusaprojects.agency@gmail.com",
+        "url": "https://www.kusa-projects.com/"
+    },
+    "gpm": {
+        "type": "theme",
+        "categories": [
+            "Blog",
+            "Magazine"
+        ]
+    },
+    "keywords": [
+        "ghost",
+        "theme",
+        "ghost-theme"
+    ],
+    "docs": "",
+    "config": {
+        "posts_per_page": 6,
+        "image_sizes": {
+            "xxs": {
+                "width": 100
+            },
+            "xs": {
+                "width": 150
+            },
+            "s": {
+                "width": 300
+            },
+            "m": {
+                "width": 720
+            },
+            "l": {
+                "width": 960
+            },
+            "xl": {
+                "width": 1200
+            },
+            "xxl": {
+                "width": 2000
+            }
+        },
+        "card_assets": {
+            "exclude": [
+                "toggle",
+                "button",
+                "header",
+                "blockquote",
+                "audio",
+                "bookmark",
+                "callout",
+                "file",
+                "gallery",
+                "product",
+                "signup"
+            ]
+        },
+        "custom": {
+            "color_scheme": {
+                "type": "select",
+                "options": [
+                    "Elegant",
+                    "Light",
+                    "Dark",
+                    "Shadow",
+                    "Vibrant"
+                ],
+                "default": "Elegant"
+            },
+            "number_of_posts_on_slider": {
+                "type": "select",
+                "options": [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                    "6",
+                    "7",
+                    "8"
+                ],
+                "default": "4"
+            },
+            "use_slider_hero_section_in_secondary_pages": {
+                "type": "boolean",
+                "default": false
+            },
+            "post_header_type": {
+                "type": "select",
+                "options": [
+                    "Wide",
+                    "Narrow",
+                    "Circular",
+                    "Vertical"
+                ],
+                "default": "Wide",
+                "group": "post"
+            },
+            "primary_font": {
+                "type": "select",
+                "options": [
+                    "Inter",
+                    "Montserrat",
+                    "Roboto",
+                    "Open Sans",
+                    "Lato",
+                    "Poppins",
+                    "Raleway",
+                    "Noto Sans",
+                    "Merriweather",
+                    "Playfair Display"
+                ],
+                "default": "Inter"
+            },
+            "secondary_font": {
+                "type": "select",
+                "options": [
+                    "Inter",
+                    "Montserrat",
+                    "Roboto",
+                    "Open Sans",
+                    "Lato",
+                    "Poppins",
+                    "Raleway",
+                    "Noto Sans",
+                    "Merriweather",
+                    "Playfair Display"
+                ],
+                "default": "Montserrat"
+            },
+            "use_custom_account_pages": {
+                "type": "boolean",
+                "default": true
+            },
+            "use_page_load_animations": {
+                "type": "boolean",
+                "default": true
+            },
+            "use_rounded_corners_on_desktop_background_overlays": {
+                "type": "boolean",
+                "default": true
+            },
+            "light_logo": {
+                "type": "image"
+            },
+            "logo_scale": {
+                "type": "select",
+                "options": [
+                    "0.2",
+                    "0.4",
+                    "0.6",
+                    "0.8",
+                    "1",
+                    "1.2",
+                    "1.4",
+                    "1.6",
+                    "1.8",
+                    "2",
+                    "2.4",
+                    "2.8",
+                    "3.2",
+                    "3.6",
+                    "4"            
+                ],
+                "default": "1"
+            },
+            "pinterest_url": {
+                "type": "text",
+                "default": ""
+            },
+            "linkedin_url": {
+                "type": "text",
+                "default": ""
+            },
+            "instagram_url": {
+                "type": "text",
+                "default": ""
+            },
+            "formspree_hash_id": {
+                "type": "text",
+                "default": "xxxxxxxx"
+            }
+        }
+    }
+}

@@ -1,0 +1,113 @@
+{{!--
+    Parameters:
+    - hideUrl: Boolean
+    - showMetadata: Boolean
+    - hideTags: Boolean
+--}}
+
+<div class="slide swiper-slide">
+    <div class="hero-image-wrapper">
+        <div class="hero-image-outer">
+            <div class="hero-image-outer-overlay"></div>
+            {{#unless hideUrl}}<a href="{{url}}" class="hero-image-link" aria-label="{{title}}">{{else}}<div class="hero-image-link">{{/unless}}
+                {{#if feature_image}} 
+                    <div class="hero-image-wrapper-inner{{#unless hideUrl}} scale-in{{/unless}}">             
+                        <figure>
+                            <img                                        
+                                srcset="{{img_url feature_image size="s"}} 300w,
+                                        {{img_url feature_image size="m"}} 720w,
+                                        {{img_url feature_image size="l"}} 960w,
+                                        {{img_url feature_image size="xl"}} 1200w,
+                                        {{img_url feature_image size="xxl"}} 2000w"
+                                src="{{img_url feature_image size="xl"}}"
+                                alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}"
+                            >
+                        </figure>  
+                    </div>
+                {{else if profile_image}}
+                    <div class="hero-image-wrapper-inner{{#unless hideUrl}} scale-in{{/unless}}">             
+                        <figure>
+                            <img                                        
+                                srcset="{{img_url profile_image size="s"}} 300w,
+                                        {{img_url profile_image size="m"}} 720w,
+                                        {{img_url profile_image size="l"}} 960w,
+                                        {{img_url profile_image size="xl"}} 1200w,
+                                        {{img_url profile_image size="xxl"}} 2000w"
+                                src="{{img_url profile_image size="xl"}}"
+                                alt="{{name}}"
+                            >
+                        </figure>  
+                    </div>                     
+                {{else}}
+                    <div class="placeholder">
+                        {{> "icons/placeholder" }}
+                    </div>                  
+                {{/if}}
+            {{#unless hideUrl}}</a>{{else}}</div>{{/unless}}
+        </div>
+    </div>
+    <div class="hero-text-content-outer">
+        <div class="hero-text-content background-color" {{#if isPage}}style="justify-content: center;"{{/if}}>
+            {{#unless isPage}}
+                <div class="subtitle-text subtitle-text-wrapper">
+                    {{#match items tags}}
+                        <div>{{plural count.posts empty=(t "No posts") singular=(t "1 post") plural=(t "% posts")}}</div>
+                    {{else}}
+                        {{#unless access}}
+                            <div class="restricted-access-icon">
+                                {{> "icons/lock-icon" }}
+                            </div>
+                            <div class="circle-separator"></div>
+                        {{/unless}}
+                        {{#foreach tags limit=2}}
+                            <a class="link-hover-animation" href="{{this.url}}">
+                                {{this.name}}
+                            </a>                                        
+                            <div class="circle-separator"></div>
+                        {{/foreach}}      
+                    {{/match}}                     
+                </div> 
+            {{/unless}}
+
+            {{#unless hideUrl}}<a class="hero-heading" href="{{url}}">{{else}}<div class="hero-heading">{{/unless}}
+                <h1 class="two-lines">
+                    {{#if name}}
+                        {{name}}
+                    {{/if}}
+                    {{#if title}}
+                        {{title}}
+                    {{/if}}
+                </h1>
+            {{#unless hideUrl}}</a>{{else}}</div>{{/unless}}
+
+            <div class="hero-paragraph-wrapper">
+                <p class="hero-excerpt four-lines">
+                    {{#if description}}
+                        {{description}} 
+                    {{/if}} 
+                    {{#if bio}}
+                        {{bio}}
+                    {{/if}} 
+                    {{#if excerpt}}                
+                        {{excerpt}}
+                    {{/if}}
+                </p>
+            </div>
+
+            {{#unless hideUrl}}
+                <a href="{{url}}" class="read-more-button">
+                    <div class="subtitle-text">{{t "Discover more"}}</div>
+                    <div class="small-arrow-icon">
+                        {{> "icons/arrow-icon-small" }}
+                    </div>
+                </a>
+            {{/unless}}
+
+            {{#if showMetadata}}
+                {{#if isPost}}
+                    {{> "components/metadata" preventAnimation=true}}
+                {{/if}}
+            {{/if}}
+        </div>
+    </div>
+</div>  

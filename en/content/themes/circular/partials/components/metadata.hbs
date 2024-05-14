@@ -1,0 +1,56 @@
+<link rel="stylesheet" type="text/css" href="{{asset "css/metadata.css"}}" />
+
+<div class="metadata{{#match @custom.post_header_type "Vertical"}}{{#if feature_image}} auto-top-margin{{/if}}{{/match}}{{#if @custom.use_page_load_animations}}{{#unless preventAnimation}} vertical-animation{{/unless}}{{/if}}">
+    <div class="post-authors">
+        <div class="post-author-images">
+            {{#foreach authors}}                                
+                <a href="{{url}}" class="post-author-image link-hover-animation-half">
+                    {{#if profile_image}}
+                        <img class="image"
+                            src="{{img_url profile_image size="xxs"}}" 
+                            alt="{{name}}" 
+                            loading="lazy">
+                    {{else}}
+                        {{> "icons/avatar-icon"}}
+                    {{/if}}
+                </a>
+            {{/foreach}}
+        </div>
+        <div class="post-authors-text">
+            <div class="post-authors-inner" id="authors">
+                <small class="post-author-name">
+                    {{authors separator=" & "}}
+                </small>
+            </div>
+            <small class="date-small-text italic">
+                <span>
+                    <time>
+                        {{date published_at format="MMM DD, YYYY"}}
+                    </time>
+                </span>
+                <span class="date-circle"></span>
+                <span>{{reading_time minute=(t "1 min read") minutes=(t "% min read")}}</span>
+            </small>
+        </div>                            
+    </div> 
+
+    <div class="post-share-icons-header">
+        <a href="https://www.facebook.com/sharer.php?u={{url absolute='true'}}" target="_blank" rel="noopener" class="social link-hover-animation" aria-label="Share on Facebook">
+            <div class="header-social">
+                {{> "icons/facebook-icon"}}
+            </div>
+        </a>
+
+        <a href="https://twitter.com/intent/tweet?url={{url absolute='true'}}&amp;text={{encode title}}" target="_blank" rel="noopener" class="social link-hover-animation" aria-label="Share on Twitter">
+            <div class="header-social">
+                {{> "icons/twitter-icon"}}
+            </div>
+        </a>
+
+        <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url={{url absolute='true'}}&amp;title={{encode title}}" target="_blank" rel="noopener" class="social link-hover-animation" aria-label="Share on Linkedin">
+            <div class="header-social-smaller">
+                {{> "icons/linkedin-icon"}}
+            </div>
+        </a>
+    </div>                  
+</div>

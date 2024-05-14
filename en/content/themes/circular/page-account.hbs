@@ -1,0 +1,38 @@
+{{#unless @member}}
+    <script>
+        window.location.href = '{{@site.url}}/signin/';
+    </script>
+{{/unless}}
+
+<link rel="stylesheet" type="text/css" href="{{asset "css/hero.css"}}" />
+<link rel="stylesheet" type="text/css" href="{{asset "css/hero-secondary.css"}}" />
+<link rel="stylesheet" type="text/css" href="{{asset "css/small-card.css"}}" />
+<link rel="stylesheet" type="text/css" href="{{asset "css/account.css"}}" />
+
+{{!< default}}
+
+<main>
+    {{#post}}
+        {{> "components/hero" type="account" feature_image="gravatar"}}
+        
+        <section class="subscribers-posts-section{{#if @custom.use_page_load_animations}} hidden-animation{{/if}}">
+            {{#get 'posts' include='tags,authors' limit='6' filter="visibility:paid"}}
+                {{#if posts}}
+                    <div class="wide-container section-padding no-padding-bottom">
+                        <div class="section-header">
+                            <div class="subtitle-text">{{t "Subscribers only posts"}}</div>
+                            <div class="subtitle-line"></div>
+                        </div>
+                    </div>
+                    <div class="small-cards-grid-outer">
+                        <div class="small-cards-grid">
+                            {{#foreach posts}}
+                                {{> "components/small-card" isPost=true}}
+                            {{/foreach}}
+                        </div>                         
+                    </div>
+                {{/if}}
+            {{/get}}
+        </section>
+    {{/post}}
+</main>

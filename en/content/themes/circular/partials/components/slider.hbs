@@ -1,0 +1,46 @@
+{{!--
+    Parameters:
+    - items: Array of items (posts, tags, authors)
+--}}
+
+<section class="slider-outer">
+    <custom-slider id="slider" class="slider wide-container swiper">
+        <div class="circle-overlay"></div>
+        <div class="swiper-wrapper">
+            {{#foreach items}} 
+                {{> "components/slide"}}
+            {{/foreach}} 
+
+            <div class="slider-arrows{{#if @custom.use_page_load_animations}} show-navigation{{/if}}">
+                <button class="slider-button swiper-prev-button" aria-label="Slider button left" name="left">
+                    <div class="slider-button-inner">
+                        <div class="arrow-icon arrow-icon-rotated">
+                            {{> "icons/arrow-icon" }}
+                        </div>
+                    </div>
+                </button>
+                <div class="slider-arrows-separator"></div>
+                <button class="slider-button swiper-next-button" aria-label="Slider button right" name="right">
+                    <div class="slider-button-inner">
+                        <div class="arrow-icon">
+                            {{> "icons/arrow-icon" }}
+                        </div>
+                    </div>
+                </button>
+            </div>
+
+            <div class="slider-numbers swiper-pagination background-color{{#if @custom.use_page_load_animations}} show-navigation{{/if}}">
+                <div class="slider-number-wrapper">
+                    <div class="number-text number-text-current">
+                        01
+                    </div>
+                </div>
+                <div class="slider-numbers-separator"></div>
+                <div class="number-text number-text-total">
+                    04
+                </div>           
+            </div>
+        </div>
+    </custom-slider>
+    <div class="hero-background{{#unless @custom.use_rounded_corners_on_desktop_background_overlays}} no-border-radius{{/unless}}"></div>
+</section> 

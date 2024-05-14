@@ -1,0 +1,109 @@
+.related-posts {
+    display: flex;
+    text-align: center;
+    background-color: var(--background-color2);
+    width: 100%;
+    overflow: hidden;
+}
+
+.related-card {
+    width: 50%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: calc(8vw * var(--scale)) calc(13.5vw * var(--scale));
+    color: var(--text-color2);
+    text-decoration: none;
+}
+
+.related-card p {
+    max-width: 235px;
+    line-height: 130% !important;
+    margin-bottom: auto;
+    color: var(--text-color2);
+}
+
+.related-posts h3 {
+    font-weight: 400;
+    color: var(--text-color2);
+}
+
+.related-card-image-wrapper {
+    margin-top: 2.7vw;
+    margin-bottom: 3.2vw;
+    height: calc(23vw * var(--scale));
+    width: calc(23vw * var(--scale));
+    border-radius: 100%;
+    overflow: hidden;
+}
+
+.related-card-image-wrapper figure,
+.related-card-image-wrapper img {
+    border-radius: 100%;
+    overflow: hidden;
+}
+
+.related-posts .related-card:nth-child(1) {
+    border-right: 1px solid var(--text-color2-20-opacity);
+}
+
+.related-posts .next-post:first-child {
+    margin-left: auto;
+    border-right: none;
+    border-left: 1px solid var(--text-color2-20-opacity);
+}
+
+/* Styles for large desktop */
+@media (min-width: 1439px) {  
+    .related-card p {
+        max-width: calc(16vw * var(--scale));
+    }
+}
+
+/* Styles for tablet */
+@media (max-width: 991px) {
+    .related-card {
+        padding: 76px 32px;
+    }
+    
+    .related-card-image-wrapper {
+        margin-top: 54px;
+        margin-bottom: 48px;
+    }
+}
+
+/* Styles for mobile */
+@media (max-width: 479px) {
+    .related-posts {
+        flex-direction: column-reverse;
+        border-top: none;
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+    
+    .related-card-image-wrapper {
+        margin-top: 50px;
+        margin-bottom: 43px;
+        height: 65vw;
+        width: 65vw;
+    }
+
+    .related-card {
+        width: 100%;
+    }
+
+    .related-posts .related-card:nth-child(1) {
+        border-right: none;
+    }
+
+    .related-posts .next-post:first-child {
+        border-left: none;
+        margin-left: 0px;
+    }
+
+    .related-posts .related-card:nth-child(2) {
+        border-bottom: 1px solid var(--text-color2-20-opacity);
+    }
+}

@@ -1,0 +1,145 @@
+{{!--
+    Parameters:
+    - type: String (tag, post, author) -> Default: post
+    - title: String
+    - description: String
+    - feature_image: Image
+--}}
+
+<section class="hero-section">
+    <div class="hero-content{{#unless feature_image}} no-hero-image{{/unless}}">
+        {{#if feature_image}} 
+            <div class="hero-image-wrapper">
+                <div class="hero-image-outer">
+                    <div class="hero-image-outer-overlay"></div>                             
+                    <div class="hero-image-link">
+                        <div class="hero-image-wrapper-inner">             
+                            <figure>
+                                {{#match feature_image "gravatar"}}
+                                    <div class="avatar-image{{#if @custom.use_page_load_animations}} hidden-animation{{/if}}">
+                                        {{> "icons/account-avatar-icon"}}
+                                    </div>
+                                    <img
+                                        class="{{#if @custom.use_page_load_animations}} horizontal-animation{{/if}}"                                     
+                                        src="{{@member.avatar_image}}&s=600"
+                                        alt="{{@member.name}}"
+                                    >                                  
+                                {{else}}
+                                    <img
+                                        class="{{#if @custom.use_page_load_animations}} horizontal-animation{{/if}}"                                     
+                                        srcset="{{img_url feature_image size="s"}} 300w,
+                                                {{img_url feature_image size="m"}} 720w,
+                                                {{img_url feature_image size="l"}} 960w,
+                                                {{img_url feature_image size="xl"}} 1200w,
+                                                {{img_url feature_image size="xxl"}} 2000w"
+                                        src="{{img_url feature_image size="xl"}}"
+                                        alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}"
+                                    >
+                                {{/match}}                              
+                            </figure>  
+                        </div>
+                    </div>                                                     
+                </div>
+            </div>
+        {{else}}
+            <script>
+                setLightLogo();
+            </script>
+        {{/if}}
+
+        <div class="hero-text-content-outer{{#unless feature_image}} no-hero-image-content{{/unless}}">
+            <div class="hero-text-content">
+                <div class="subtitle-text subtitle-text-wrapper{{#if @custom.use_page_load_animations}} vertical-animation{{/if}}">
+                    {{#match type "tag"}}
+                        {{#get "posts" filter="tags:{{slug}}+id:-{{id}}"}}
+                            {{plural posts.length empty=(t "No posts") singular=(t "1 post") plural=(t "% posts")}}
+                        {{/get}} 
+                    {{else match type "archive"}}
+                        {{#get "posts" limit="all"}}
+                            {{plural posts.length empty=(t "No posts") singular=(t "1 post") plural=(t "% posts")}}
+                        {{/get}}
+                    {{else match type "author"}}
+                        {{#if location}}
+                            {{location}}
+                            <div class="circle-separator"></div>
+                        {{/if}}
+                    {{else match type "authors"}}
+                        {{#get "authors" limit="all"}}
+                            {{plural authors.length empty=(t "No authors") singular=(t "1 author") plural=(t "% authors")}}
+                        {{/get}}
+                    {{else match type "404"}} 
+                        {{!-- empty --}}
+                    {{else match type "account"}} 
+                        {{!-- empty --}}                                  
+                    {{else}}
+                        {{#get "tags" limit="all"}}
+                            {{plural tags.length empty=(t "No tags") singular=(t "1 tag") plural=(t "% tags")}}  
+                        {{/get}}
+                    {{/match}}            
+                </div>
+
+                <div class="hero-heading">
+                    <h1 class="one-line{{#if @custom.use_page_load_animations}} vertical-animation{{/if}}">
+                        {{#match type "account"}}
+                            {{#if @member.name}}{{@member.name}}{{else}}{{t "Your account"}}{{/if}}
+                        {{else}}
+                            {{title}}
+                        {{/match}}
+                    </h1>
+                </div>
+
+                <div class="hero-paragraph-wrapper">
+                    <p class="hero-excerpt four-lines{{#if @custom.use_page_load_animations}} vertical-animation{{/if}}">
+                        {{#match type "account"}}
+                            {{#if @member.paid}}{{t "You currently have a paid membership, you can find more details in your account settings."}}{{else}}{{t "You currently have a free membership, upgrade to a paid subscription for full access."}}{{/if}}
+                        {{else}}
+                            {{description}}
+                        {{/match}}                                    
+                    </p>
+                </div>
+
+                {{#match type "author"}}
+                    <div class="author-socials{{#if @custom.use_page_load_animations}} vertical-animation{{/if}}">
+                        {{#if facebook}}
+                            <a href="{{facebook_url}}" target="_blank" rel="noopener" class="social link-hover-animation" aria-label="Facebook">
+                                <div class="social-inner-share">
+                                    {{> "icons/facebook-icon"}}
+                                </div>
+                            </a>
+                        {{/if}}
+                        {{#if twitter}}
+                            <a href="{{twitter_url}}" target="_blank" rel="noopener" class="social link-hover-animation" aria-label="Twitter">
+                                <div class="social-inner-share">
+                                    {{> "icons/twitter-icon"}}
+                                </div>
+                            </a>
+                        {{/if}}
+                        {{#if website}}
+                            <a href="{{website}}" target="_blank" rel="noopener" class="social link-hover-animation" aria-label="Website URL">
+                                <div class="social-inner-share">
+                                    {{> "icons/link-icon"}}
+                                </div>
+                            </a>
+                        {{/if}}
+                    </div>
+                {{/match}}
+
+                {{#match type "404"}}
+                    <div class="back-home-button-wrapper{{#if @custom.use_page_load_animations}} vertical-animation{{/if}}">
+                        <a class="back-home-button button" href="{{@site.url}}">
+                            {{t "Back to homepage"}}
+                            <div class="button-shadow button-shadow-dark"></div>
+                        </a>
+                    </div>
+                {{/match}}
+
+                {{#match type "account"}}
+                    {{> "components/account-details"}}
+                {{/match}}
+            </div>
+        </div>
+    </div>
+    {{#if feature_image}}
+        <div class="hero-background{{#unless @custom.use_rounded_corners_on_desktop_background_overlays}} no-border-radius{{/unless}}"></div>
+    {{/if}}
+</section>

@@ -1,0 +1,57 @@
+{{!--
+    Parameters:
+    - isPost: Boolean
+--}}
+
+<div class="small-card">
+    <div class="small-card-top">
+        <small class="italic number-class" data-index="{{@index}}">
+            <script>
+                document.currentScript.parentNode.innerHTML = (parseInt(document.currentScript.parentNode.dataset.index) + 1).toString().padStart(2, '0');
+            </script>
+        </small>
+        {{#if isPost}}
+            {{#unless access}}
+                <div class="restricted-access-icon">
+                    {{> "icons/lock-icon" }}
+                </div>
+            {{/unless}}
+        {{/if}}
+    </div>
+    <a href="{{url}}" class="small-card-grid-item-image-link scale-in" aria-label="{{#if isPost}}{{title}}{{else}}{{name}}{{/if}}">
+        {{#if feature_image}}                   
+            <figure>
+                <img
+                    srcset="{{img_url feature_image size="xxs"}} 100w,
+                            {{img_url feature_image size="xs"}} 150w,
+                            {{img_url feature_image size="s"}} 300w,
+                            {{img_url feature_image size="m"}} 720w,
+                            {{img_url feature_image size="l"}} 960w"
+                    src="{{img_url feature_image size="l"}}"
+                    alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}"
+                >
+            </figure>                   
+        {{else}}
+            <div class="placeholder">
+                {{> "icons/placeholder" }}
+            </div>                  
+        {{/if}}
+    </a>
+    <div class="small-card-item-text-wrapper">
+        <a href="{{url}}" class="medium-text two-lines">
+            {{#if isPost}}
+                {{title}}      
+            {{else}}
+                {{name}}
+            {{/if}}
+        </a>
+        <small class="small-card-posts-number italic">
+            {{#if isPost}}
+                {{t "by"}}
+                {{authors separator=" & "}}
+            {{else}}
+                {{plural count.posts empty=(t "No posts") singular=(t "1 post") plural=(t "% posts")}}
+            {{/if}}           
+        </small>
+    </div>
+</div>

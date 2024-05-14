@@ -1,0 +1,36 @@
+<div class="card">
+    <div class="card-top">
+        <small class="italic number-class">01</small>
+        <small class="italic flex-center">
+            {{plural count.posts empty=(t "No posts") singular=(t "1 post") plural=(t "% posts")}}
+        </small>
+    </div>
+
+    <a href="{{url}}" class="grid-item-image-link scale-in" aria-label="{{name}}">
+        {{#if profile_image}}                   
+            <figure>
+                <img
+                    srcset="{{img_url profile_image size="s"}} 300w,
+                            {{img_url profile_image size="m"}} 720w,
+                            {{img_url profile_image size="l"}} 960w,
+                            {{img_url profile_image size="xl"}} 1200w"
+                    src="{{img_url profile_image size="xl"}}"
+                    alt="{{name}}"
+                >
+            </figure>                   
+        {{else}}
+            <div class="placeholder">
+                {{> "icons/placeholder" }}
+            </div>                  
+        {{/if}}
+    </a>
+
+    <div class="card-item-text-wrapper">
+        <a href="{{url}}" class="medium-text">
+            {{name}}
+        </a>
+        <div class="card-item-paragraph-wrapper">
+            <p class="three-lines">{{bio}}</p>
+        </div>
+    </div>
+</div>

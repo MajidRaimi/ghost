@@ -1,0 +1,430 @@
+:root {
+    --scale: 1;
+}
+
+@media (min-width: 1920px) {
+    :root{
+        --scale: 0.8;
+    }
+}
+
+#comments-section {
+    padding: 0px 17vw !important;
+    padding-bottom: calc(5.4vw * var(--scale)) !important;
+}
+
+#comments-section * {
+    font-family: var(--font1) !important;
+}
+
+#comments-section div[data-test="comment-elements"]:not(:empty){
+    padding-top: calc(1.2vw * var(--scale));
+    padding-bottom: calc(0.6vw * var(--scale));
+}
+
+#comments-section figure {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 53px;
+    width: 53px;
+    height: 53px;
+    overflow: hidden;
+}
+
+#comments-section figure div, #comments-section figure img {
+    width: 100%;
+    height: 100%;
+}
+
+#comments-section figure img {
+    border: 1px solid var(--text-color1);
+    border-radius: 100%;
+}
+
+#comments-section figure {
+    margin-right: calc(0.5vw * var(--scale));
+}
+
+
+#comments-section h1 {
+    font-family: var(--font1);
+    font-weight: 400;
+    letter-spacing: -0.03em;
+    font-size: calc(3vw * var(--scale));
+    color: var(--text-color1);
+}
+
+#comments-section h1 + p {
+    font-size: 18px;
+}
+
+#comments-section p {
+    font-family: var(--font1);
+    font-size: 16px;
+    line-height: 160%;
+    color: var(--text-color1);
+}
+
+#comments-section h4 {
+    font-family: var(--font1);
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    color: var(--text-color1);
+    font-size: 15px;
+    line-height: 110%;
+    margin-top: 12px;
+}
+
+#comments-section div[data-test="comment-elements"] span:not(form span), #comments-section div[data-test="comment-elements"] .group {
+    margin-top: calc(0.3vw * var(--scale));
+    font-family: var(--font1);
+    line-height: 130%;
+    color: var(--text-color1);
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+#comments-section .gh-comment-content {
+    margin-top: calc(0.7vw * var(--scale));
+    margin-bottom: calc(0.7vw * var(--scale));
+}
+
+#comments-section [data-testid="like-button"] svg {
+    width: 16px;
+    height: 16px;
+}
+
+#comments-section .fill-\[rgba\(0\2c 0\2c 0\2c 0\.9\)\]{
+    stroke: var(--text-color1);
+    fill: var(--text-color1);
+}
+
+#comments-section [data-testid="comment-component"] {
+    margin-top: calc(4.2vw * var(--scale));
+    margin-bottom: 0;
+}
+
+#comments-section section {
+    margin-top: calc(5.4vw * var(--scale));
+    padding-top: calc(5.4vw * var(--scale));
+    padding-bottom: calc(5.4vw * var(--scale));
+    border-color: var(--text-color1-40-opacity);
+}
+
+#comments-section section > button {
+    font-family: var(--font1);
+    border-radius: 100px;
+    border: 1px solid var(--text-color2) !important;
+    font-size: 16px;
+    color: var(--text-color2) !important;
+    line-height: 140%;
+    padding: 8px 28px;
+    background-color: var(--background-color) !important;
+    white-space: nowrap;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: calc(2.2vw * var(--scale));
+    margin-bottom: 0;
+}
+
+#comments-section button:hover {
+    opacity: 1;
+}
+
+#comments-section [data-testid="submit-form-button"] {
+    background-color: var(--text-color1) !important;
+    color: var(--background-color1) !important;
+    font-weight: 400;
+    font-size: 16px;
+    padding: calc(0.8vw * var(--scale)) calc(2vw * var(--scale));
+    line-height: 100%;
+    margin-bottom: 0;
+    width: auto;
+    height: auto;
+    margin-right: calc(0.8vw * var(--scale));
+    font-family: var(--font1);
+}
+
+#comments-section section p {
+    margin-bottom: 0;
+}
+
+#comments-section section p span:not(.font-semibold),  #comments-section section p button{
+    margin-top: calc(1.1vw * var(--scale));
+    font-family: var(--font1);
+    line-height: 130%;
+    color: var(--text-color1);
+    font-size: 14px;
+    opacity: 0.6;
+}
+
+#comments-section section p button {
+    color: var(--text-color1) !important;
+    opacity: 1 !important;
+}
+
+#comments-section section p button:hover {
+    text-decoration: underline;
+}
+
+#comments-section form {
+    margin-top: calc(4.2vw * var(--scale));
+    margin-bottom: 0px;
+}
+
+#comments-section .pl-\[52px\] {
+    padding-left: calc(5vw * var(--scale)) !important;
+}
+
+#comments-section .rounded-md p {
+    padding-left: calc(1vw * var(--scale));
+    padding-right: calc(1vw * var(--scale));
+}
+
+#comments-section form button {
+    font-size: 16px;
+    color: var(--text-color1);
+}
+
+/* #comments-section > div:first-child {
+    display: none;
+} */
+
+/* Styles for large desktop */
+@media (min-width: 1439px) {
+    #comments-section p {
+        font-size: calc(1.11vw * var(--scale));
+    }
+
+    #comments-section h1 + p {
+        font-size: calc(1.25vw * var(--scale));
+    }
+    
+    #comments-section h4 {
+        font-size: calc(1.05vw * var(--scale));
+        margin-top: calc(0.8vw * var(--scale));
+    }
+
+    #comments-section div[data-test="comment-elements"] span:not(form span), #comments-section div[data-test="comment-elements"] .group {
+        font-size: calc(1vw * var(--scale));
+    }
+
+    #comments-section section p span:not(.font-semibold), #comments-section section p button {
+        font-size: calc(1vw * var(--scale));
+    }
+
+    #comments-section [data-testid="like-button"] svg {
+        width: calc(1.1vw * var(--scale));
+        height: calc(1.1vw * var(--scale));
+    }
+
+    #comments-section section > button {
+        font-size: calc(1.11vw * var(--scale));
+        padding: calc(0.6vw * var(--scale)) calc(1.95vw * var(--scale));
+    }
+
+    #comments-section [data-testid="submit-form-button"] {
+        font-size: calc(1.1vw * var(--scale));
+    }
+
+    #comments-section form button {
+        font-size: calc(1.1vw * var(--scale));
+    }
+
+    #comments-section figure {
+        min-width: calc(3.7vw * var(--scale));
+        width: calc(3.7vw * var(--scale));
+        height: calc(3.7vw * var(--scale));
+    }
+}
+
+/* Styles for extra large desktop */
+@media (min-width: 1920px) {
+    #comments-section {
+        padding: 0px 20vw !important;
+        padding-bottom: calc(5.4vw * var(--scale)) !important;
+    }
+
+    #comments-section figure {
+        margin-right: calc(0.8vw * var(--scale));
+    }
+}
+
+/* Styles for tablet */
+@media (max-width: 991px) {
+    #comments-section {
+        padding: 0px 30px !important;
+        padding-bottom: 60px !important;
+    }
+
+    #comments-section div[data-test="comment-elements"]:not(:empty){
+        padding-top: 28px;
+        padding-bottom: 14px;
+    }
+    
+    #comments-section figure {
+        margin-right: 5px;
+    }
+     
+    #comments-section h1 {
+        font-size: 38px;
+    }
+    
+    #comments-section div[data-test="comment-elements"] span:not(form span), #comments-section div[data-test="comment-elements"] .group {
+        margin-top: 3px;
+        font-size: 13px;
+    }
+    
+    #comments-section .gh-comment-content {
+        margin-top: 4px;
+        margin-bottom: 4px;
+    }
+    
+    #comments-section [data-testid="like-button"] svg {
+        width: 14px;
+        height: 14px;
+    }
+    
+    #comments-section [data-testid="comment-component"] {
+        margin-top: 48px;
+    }
+    
+    #comments-section section {
+        margin-top: 60px;
+        padding-top: 60px;
+        padding-bottom: 60px;
+    }
+    
+    #comments-section section > button {
+        margin-top: 26px;
+    }
+    
+    #comments-section [data-testid="submit-form-button"] {
+        font-size: 14px;
+        padding: 8px 26px;
+    }
+    
+    
+    #comments-section section p span:not(.font-semibold),  #comments-section section p button{
+        margin-top: 12px;
+        font-size: 14px;
+    }
+    
+    #comments-section form {
+        margin-top: 42px;
+    }
+    
+    #comments-section .pl-\[52px\] {
+        padding-left: 68px !important;
+    }
+    
+    #comments-section .rounded-md p {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    
+    #comments-section form button {
+        font-size: 14px;
+    }
+}
+
+/* Styles for mobile */
+@media (max-width: 479px) {
+    #comments-section {
+        padding: 0px 18px !important;
+        padding-bottom: 50px !important;
+    }
+
+    #comments-section div[data-test="comment-elements"]:not(:empty){
+        padding-top: 22px;
+        padding-bottom: 11px;
+    }
+    
+    #comments-section figure {
+        min-width: 47px;
+        width: 47px;
+        height: 47px;
+    }
+    
+    #comments-section figure {
+        margin-right: 4px;
+    }
+    
+    #comments-section h1 {
+        font-size: 28px;
+    }
+    
+    #comments-section p {
+        font-size: 14px;
+    }
+
+    #comments-section h1 + p {
+        font-size: 16px;
+    }
+    
+    #comments-section h4 {
+        font-size: 14px;
+        margin-top: 10px;
+    }
+    
+    #comments-section div[data-test="comment-elements"] span:not(form span), #comments-section div[data-test="comment-elements"] .group {
+        margin-top: 3px;
+        font-size: 12px;
+    }
+    
+    #comments-section .gh-comment-content {
+        margin-top: 3px;
+        margin-bottom: 3px;
+    }
+    
+    #comments-section [data-testid="like-button"] svg {
+        width: 13px;
+        height: 13px;
+    }
+    
+    #comments-section [data-testid="comment-component"] {
+        margin-top: 36px;
+    }
+    
+    #comments-section section {
+        margin-top: 50px;
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
+    
+    #comments-section section > button {
+        padding: 7px 26px;
+        margin-top: 24px;
+    }
+    
+    #comments-section [data-testid="submit-form-button"] {
+        font-size: 13px;
+        padding: 8px 22px;
+    }
+    
+    
+    #comments-section section p span:not(.font-semibold),  #comments-section section p button{
+        margin-top: 10px;
+        font-size: 13px;
+    }
+    
+    #comments-section form {
+        margin-top: 28px;
+    }
+    
+    #comments-section .pl-\[52px\] {
+        padding-left: 60px !important;
+    }
+    
+    #comments-section .rounded-md p {
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+    
+    #comments-section form button {
+        font-size: 13px;
+    }
+}

@@ -1,0 +1,74 @@
+<link rel="stylesheet" type="text/css" href="{{asset "css/featured-posts.css"}}" />
+
+<section class="featured-posts">
+    <featured-posts class="featured-posts-inner">
+        <div class="featured-posts-subtitle-text">
+            <div class="sticky-section-header">
+                <div class="section-header">
+                    <div class="subtitle-text">{{t "Featured posts"}}</div>
+                    <div class="subtitle-line"></div>
+                    <div class="titles-top-overlay"></div>
+                </div>
+            </div>
+        </div>
+        <div class="featured-posts-sticky-outer{{#unless @custom.use_rounded_corners_on_desktop_background_overlays}} no-border-radius{{/unless}}">
+            <div class="sticky-featured-posts">
+                {{#foreach posts}}
+                    <div class="sticky-item" {{#if @first}}data-active-post{{/if}} data-index="{{@index}}">
+                        <a href="{{url}}" class="featured-post-image-link scale-in" aria-label="{{title}}">
+                            {{#if feature_image}}                   
+                                <figure>
+                                    <img
+                                        srcset="{{img_url feature_image size="s"}} 300w,
+                                                {{img_url feature_image size="m"}} 720w,
+                                                {{img_url feature_image size="l"}} 960w,
+                                                {{img_url feature_image size="xl"}} 1200w"
+                                        src="{{img_url feature_image size="xl"}}"
+                                        alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}"
+                                    >
+                                </figure>                   
+                            {{else}}
+                                <div class="placeholder">
+                                    {{> "icons/placeholder" }}
+                                </div>                  
+                            {{/if}}
+                        </a>
+                        <div class="featured-post-text-wrapper">
+                            <div class="subtitle-text subtitle-text-wrapper">
+                                {{#unless access}}
+                                    <div class="restricted-access-icon">
+                                        {{> "icons/lock-icon" }}
+                                    </div>
+                                    <div class="circle-separator"></div>
+                                {{/unless}}
+                                {{#foreach tags limit=2}}
+                                    <a class="link-hover-animation" href="{{this.url}}">
+                                        {{this.name}}
+                                    </a>                                        
+                                    <div class="circle-separator"></div>
+                                {{/foreach}}                      
+                            </div>
+                            <a class="hidden-on-desktop" href="{{this.url}}">
+                                <h2 class="two-lines">{{title}}</h2>
+                            </a>
+                            <div class="featured-post-paragraph-wrapper">
+                                <p class="three-lines">
+                                    {{excerpt}}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                {{/foreach}}
+            </div>
+        </div>
+        <div class="featured-posts-titles">
+            <div class="featured-posts-titles-inner">
+                {{#foreach posts}}
+                    <a class="featured-post-heading-link" href="{{url}}" {{#if @first}}data-active-post{{/if}} data-index="{{@index}}">
+                        <h2 class="two-lines">{{title}}</h2>
+                    </a>
+                {{/foreach}}
+            </div>
+        </div>
+    </featured-posts>
+</section>

@@ -1,0 +1,99 @@
+<link rel="stylesheet" type="text/css" href="{{asset "css/membership.css"}}" />
+<link rel="stylesheet" type="text/css" href="{{asset "css/toggle-card.css"}}" />
+<link rel="stylesheet" type="text/css" href="{{asset "css/small-card.css"}}" />
+
+{{!< default}}
+
+{{#post}}
+    <main>
+        <section class="membership-hero wide-container">
+            <div class="hero-text-content">
+                <div class="hero-heading">
+                    <h1 class="{{#if @custom.use_page_load_animations}} vertical-animation{{/if}}">
+                        {{title}}
+                    </h1>
+                </div>
+                
+                <div class="hero-paragraph-wrapper">
+                    <p class="hero-excerpt four-lines{{#if @custom.use_page_load_animations}} vertical-animation{{/if}}">
+                        {{excerpt}}             
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="membership-section-outer wide-container">
+             {{#get "tiers"}}
+                {{#if tiers}}
+                    <custom-membership class="membership-section">
+                        <div class="membership-buttons{{#if @custom.use_page_load_animations}} vertical-animation{{/if}}">
+                            <button class="button membership-button" data-inactive="true" data-tab="monthly">{{t "Monthly"}}</button>
+                            <button class="button membership-button" data-tab="yearly">{{t "Yearly"}}</button>
+                        </div>
+                        <div class="tiers-wrapper{{#if @custom.use_page_load_animations}} vertical-animation{{/if}}">
+                            <div class="membership-tiers" data-inactive="true" data-tab-content="monthly">
+                                {{#foreach tiers}}
+                                    {{#if @member}}
+                                        {{#match type "paid"}}
+                                            {{> "components/tier-card"}}
+                                        {{/match}}
+                                    {{else}}
+                                        {{> "components/tier-card"}}
+                                    {{/if}}                   
+                                {{/foreach}}
+                            </div>
+                            <div class="membership-tiers" data-tab-content="yearly">
+                                {{#foreach tiers}}
+                                    {{#if @member}}
+                                        {{#match type "paid"}}
+                                            {{> "components/tier-card" yearly=true}}
+                                        {{/match}}
+                                    {{else}}
+                                        {{> "components/tier-card" yearly=true}}
+                                    {{/if}}
+                                {{/foreach}}
+                            </div>
+                        </div>                    
+                    </custom-membership>
+                {{/if}}
+            {{/get}}
+            <div class="membership-overlay{{#unless @custom.use_rounded_corners_on_desktop_background_overlays}} no-border-radius{{/unless}}"></div>
+        </section>
+
+        <section class="faq-section section-padding no-padding-bottom">
+            <div class="wide-container">
+                <div class="section-header">
+                    <div class="subtitle-text">{{t "Frequently asked questions"}}</div>
+                    <div class="subtitle-line"></div>
+                </div>
+            </div> 
+            <div class="faq-wrapper narrow-container section-padding no-padding-bottom">
+                {{content}}
+            </div>                                       
+        </section>
+
+        <section class="subscribers-posts-section">
+            {{#get 'posts' include='tags,authors' limit='6' filter="visibility:paid"}}
+                {{#if posts}}
+                    <div class="wide-container section-padding no-padding-bottom">
+                        <div class="section-header">
+                            <div class="subtitle-text">{{t "Subscribers only posts"}}</div>
+                            <div class="subtitle-line"></div>
+                        </div>
+                    </div>
+                    <div class="small-cards-grid-outer">
+                        <div class="small-cards-grid">
+                            {{#foreach posts}}
+                                {{> "components/small-card" isPost=true}}
+                            {{/foreach}}
+                        </div>                         
+                    </div>
+                {{/if}}
+            {{/get}}
+        </section>
+    </main>
+{{/post}}
+
+<script>
+    setLightLogo();
+</script>

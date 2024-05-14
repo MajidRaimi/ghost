@@ -1,0 +1,201 @@
+.metadata {
+    margin-top: calc(1.11vw * var(--scale));
+    padding-top: calc(2.22vw * var(--scale));
+    padding-bottom: calc(3vw * var(--scale));
+    border-top: 1px solid var(--text-color2-40-opacity);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    transition-delay: 0.4s;
+}
+
+.post-authors {
+    display: flex;
+    align-items: center;
+}
+
+.post-author-images {
+    display: flex;
+}
+
+.post-author-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 53px;
+    width: 53px;
+    height: 53px;
+    border-radius: 100%;
+    border: 1px solid var(--text-color2);
+    overflow: hidden;
+    background-color: var(--background-color);
+}
+
+.post-author-image {
+    margin-left: -30px;
+}
+
+.post-author-image:first-of-type {
+    margin-left: 0px;
+    z-index: 5;
+}
+
+.post-author-image:nth-child(2){
+    z-index: 4;
+}
+
+.post-author-image:nth-child(3){
+    z-index: 3;
+}
+
+.post-author-image:nth-child(4){
+    z-index: 2;
+}
+
+.post-author-image:nth-child(5){
+    z-index: 1;
+}
+
+.post-author-image:last-of-type {
+    margin-right: 15px;
+}
+
+.post-avatar {
+    transform: translateY(17%);
+}
+
+.post-authors-text {
+    display: flex;
+    flex-direction: column;
+    row-gap: 4px;
+}
+
+.post-authors-inner {
+    display: flex;
+}
+
+.post-author-name {
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--text-color2);
+    opacity: 1;
+}
+
+.post-author-name a {
+    display: inline-flex;
+}
+
+.date-small-text {
+    display: flex;
+    align-items: center;
+}
+
+.date-circle {
+    display: inline-block;
+    width: 3px;
+    min-width: 3px;
+    height: 3px;
+    min-height: 3px;
+    border-radius: 100%;
+    background-color: var(--text-color2);
+    opacity: 0.8;
+    margin-left: 8px;
+    margin-right: 8px;
+}
+
+.post-share-icons-header {
+    display: flex;
+    align-items: center;
+    column-gap: calc(1.6vw * var(--scale));
+}
+
+.header-social {
+    height: 23px;
+    min-height: 23px;
+    width: 23px;
+    min-width: 23px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header-social-smaller {
+    height: 22px;
+    min-height: 22px;
+    width: 22px;
+    min-width: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Styles for large desktop */
+@media (min-width: 1439px) {   
+    .post-author-image {
+        min-width: calc(3.7vw * var(--scale));
+        width: calc(3.7vw * var(--scale));
+        height: calc(3.7vw * var(--scale));
+    }
+
+    .post-author-name {
+        font-size: calc(1.05vw * var(--scale));
+    }
+
+    .post-author-image {
+        margin-left: calc(-2vw * var(--scale));
+    }
+
+    .post-authors-text {
+        row-gap: calc(0.3vw * var(--scale));
+    }
+
+    .post-author-image:last-of-type {
+        margin-right: calc(1.1vw * var(--scale));
+    }
+
+    .date-circle {
+        width: calc(0.21vw * var(--scale));
+        min-width: calc(0.21vw * var(--scale));
+        height: calc(0.21vw * var(--scale));
+        min-height: calc(0.21vw * var(--scale));
+        margin-left: calc(0.56vw * var(--scale));
+        margin-right: calc(0.56vw * var(--scale));
+    }
+    
+    .header-social {
+        height: calc(1.6vw * var(--scale));
+        min-height: calc(1.6vw * var(--scale));
+        width: calc(1.6vw * var(--scale));
+        min-width: calc(1.6vw * var(--scale));
+    }
+    
+    .header-social-smaller {
+        height: calc(1.5vw * var(--scale));
+        min-height: calc(1.5vw * var(--scale));
+        width: calc(1.5vw * var(--scale));
+        min-width: calc(1.5vw * var(--scale));
+    }
+}
+
+/* Styles for tablet */
+@media (max-width: 991px) { 
+    .metadata {
+        margin-top: 14px;
+        padding-top: 34px;
+        padding-bottom: 40px;
+    }
+    
+    .post-share-icons-header {
+        display: none;
+    }
+}
+
+/* Styles for mobile */
+@media (max-width: 479px) {
+    .metadata {
+        margin-top: 13px;
+        padding-top: 30px;
+        padding-bottom: 34px;
+    }
+}

@@ -1,0 +1,41 @@
+<link rel="stylesheet" type="text/css" href="{{asset "css/hero.css"}}" />
+<link rel="stylesheet" type="text/css" href="{{asset "css/hero-secondary.css"}}" />
+<link rel="stylesheet" type="text/css" href="{{asset "css/card.css"}}" />
+
+{{!< default}}
+
+<main>
+    {{#post}}
+        {{#if @custom.use_slider_hero_section_in_secondary_pages}}
+            {{#get "authors" limit="all" include='count.posts'}}
+                {{> "components/slider" items=authors}}
+            {{/get}}
+        {{else}}
+            {{> "components/hero" type="authors" description=excerpt}}
+        {{/if}}
+    {{/post}}
+
+    {{#unless @custom.use_slider_hero_section_in_secondary_pages}}
+        <section class="light-background latest-posts section-padding no-padding-bottom{{#if @custom.use_page_load_animations}} hidden-animation{{/if}}">
+            <div class="wide-container">
+                <div class="section-header">
+                    <div class="subtitle-text">{{t "Meet our authors"}}</div>
+                    <div class="subtitle-line"></div>
+                </div>
+                <div class="grid pagination-grid">
+                    {{#get "authors" limit="all" include='count.posts'}}
+                        {{#foreach authors}}
+                            {{> "components/author-card" }}                           
+                        {{/foreach}}
+                    {{/get}}
+                </div> 
+            </div>        
+        </section> 
+    {{/unless}}
+</main>
+
+<script>
+    document.querySelectorAll(".pagination-grid .card").forEach((card,index) => {
+        card.querySelector('.card-top .number-class').innerHTML = (index + 1).toString().padStart(2, '0');
+    })
+</script>

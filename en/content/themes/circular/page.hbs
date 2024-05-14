@@ -1,0 +1,11 @@
+<link rel="stylesheet" type="text/css" href="{{asset "css/post.css"}}" />
+<link rel="stylesheet" type="text/css" href="{{asset "css/post-content.css"}}" />
+<link rel="stylesheet" type="text/css" href="{{asset "css/toggle-card.css"}}" />
+
+{{!< default}}
+
+{{#post}}
+    <main>
+        {{> "components/article" isPage=true}}
+    </main>
+{{/post}}

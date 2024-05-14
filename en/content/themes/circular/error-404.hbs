@@ -1,0 +1,69 @@
+<link rel="stylesheet" type="text/css" href="{{asset "css/hero.css"}}" />
+<link rel="stylesheet" type="text/css" href="{{asset "css/hero-secondary.css"}}" />
+<link rel="stylesheet" type="text/css" href="{{asset "css/small-card.css"}}" />
+
+{{!< default}}
+
+<main id="error-page">
+   {{> "components/hero" type="404" title=(t "404") description=(t "Page not found. The page you are looking for doesn't exist or has been moved.")}}
+
+   <section class="footer-latest-posts{{#if @custom.use_page_load_animations}} hidden-animation{{/if}}">
+        {{#get 'posts' include='tags,authors' limit='6'}}
+            {{#if posts}}
+                <div class="wide-container section-padding no-padding-bottom">
+                    <div class="section-header">
+                        <div class="subtitle-text">{{t "Latest posts"}}</div>
+                        <div class="subtitle-line"></div>
+                    </div>
+                </div>
+                <div class="small-cards-grid-outer">
+                    <div class="small-cards-grid">
+                        {{#foreach posts}}
+                            {{> "components/small-card" isPost=true}}
+                        {{/foreach}}
+                    </div>                         
+                </div>
+            {{/if}}
+        {{/get}}
+    </section>
+</main>
+
+<style>
+    #error-page .back-home-button-wrapper {
+        margin-top: calc(1.7vw * var(--scale));
+    }
+
+    #error-page .hero-paragraph-wrapper {
+        max-width: 480px;
+    }
+
+    #error-page h1 {
+        font-size: calc(6vw * var(--scale));
+        line-height: 100%;
+    }
+
+    /* Styles for large desktop */
+    @media (min-width: 1439px) {  
+        #error-page .hero-paragraph-wrapper {
+            max-width: calc(33.3vw * var(--scale));
+        }
+    }
+
+    /* Styles for tablet */
+    @media (max-width: 991px) {
+        #error-page .back-home-button-wrapper {
+            margin-top: 25px;
+        }
+
+        #error-page h1 {
+            font-size: 54px;
+        }
+    }
+
+    /* Styles for mobile */
+    @media (max-width: 479px) { 
+        #error-page h1 {
+            font-size: 42px;
+        }
+    }
+</style>

@@ -1,0 +1,10 @@
+<custom-pagination>
+    <nav class="pagination-nav">
+        {{#if next}}
+            <button id="load-more-btn" data-current-page="1" class="pagination-button button" style="display: {{#if pagination.next}}flex{{else}}none{{/if}}">
+                {{t "Load more"}}
+                <div class="button-shadow"></div>
+            </button>
+        {{/if}}
+    </nav>
+</custom-pagination>

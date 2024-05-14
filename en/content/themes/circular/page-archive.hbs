@@ -1,0 +1,29 @@
+<link rel="stylesheet" type="text/css" href="{{asset "css/card.css"}}" />
+<link rel="stylesheet" type="text/css" href="{{asset "css/hero.css"}}" />
+<link rel="stylesheet" type="text/css" href="{{asset "css/hero-secondary.css"}}" />
+
+{{!< default}}
+
+<main>
+    {{#post}}
+        {{> "components/hero" type="archive" description=excerpt}}
+    {{/post}}
+
+    {{#get "posts" include="tags,authors" limit="all"}}
+        <archive-container>
+            <section id="archive-0" class="latest-posts section-padding no-padding-bottom archive-container{{#if @custom.use_page_load_animations}} hidden-animation{{/if}}">
+                <div class="wide-container">
+                    <div class="section-header">
+                        <div class="subtitle-text"></div>
+                        <div class="subtitle-line"></div>
+                    </div>
+                    <div class="grid pagination-grid">
+                        {{#foreach posts}}
+                            {{> "components/card" }}                     
+                        {{/foreach}}
+                    </div>
+                </div>        
+            </section>
+        </archive-container> 
+    {{/get}}
+</main>

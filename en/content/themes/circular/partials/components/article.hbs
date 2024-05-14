@@ -1,0 +1,265 @@
+{{!--
+    Parameters:
+    - isPost: Boolean
+    - isPage: Boolean
+--}}
+
+{{#if isPost}}
+    <link rel="stylesheet" type="text/css" href="{{asset "css/small-card.css"}}" />
+    <link rel="stylesheet" type="text/css" href="{{asset "css/related-card.css"}}" />
+{{/if}}
+
+<article>
+    {{#match @page.show_title_and_feature_image}}
+        {{#match @custom.post_header_type "Circular"}}
+            {{#if feature_image}}
+                <link rel="stylesheet" type="text/css" href="{{asset "css/hero.css"}}" />
+                <header class="slider-outer">
+                    <custom-slider class="slider wide-container swiper" data-allow-touch-move="false">
+                        <div class="circle-overlay"></div>
+                        <div class="swiper-wrapper">
+                            {{> "components/slide" hideUrl=true showMetadata=true}}
+                        </div>
+                    </custom-slider>
+                    <div class="hero-background{{#unless @custom.use_rounded_corners_on_desktop_background_overlays}} no-border-radius{{/unless}}"></div>
+                </header>
+            {{else}}
+                <header class="post-header{{#if isPage}} section-padding-bottom-smaller{{/if}}">
+                    <div class="post-header-text narrow-container">
+                        {{#if isPost}}
+                            <div class="subtitle-text subtitle-text-wrapper{{#if @custom.use_page_load_animations}} vertical-animation{{/if}}">
+                                {{#foreach tags limit=2}}               
+                                    <a class="link-hover-animation" href="{{this.url}}">
+                                        {{this.name}}
+                                    </a>                                        
+                                    <div class="circle-separator"></div>            
+                                {{/foreach}}
+                            </div> 
+                        {{/if}}
+
+                        <h1 class="post-title{{#if @custom.use_page_load_animations}} vertical-animation{{/if}}">{{title}}</h1>
+
+                        {{#if custom_excerpt}}
+                            <div class="post-excerpt{{#if @custom.use_page_load_animations}} vertical-animation{{/if}}">
+                                <p>{{custom_excerpt}}</p>
+                            </div>
+                        {{/if}}
+
+                        {{#if isPost}}
+                            {{> "components/metadata" }}
+                        {{/if}}
+                    </div>
+                </header>
+                <script>
+                    setLightLogo();
+                </script>
+            {{/if}}
+        {{else}}
+            <header class="post-header{{#match @custom.post_header_type "Vertical"}}{{#if feature_image}} vertical-layout{{/if}}{{/match}} 
+            {{#unless @custom.use_rounded_corners_on_desktop_background_overlays}} no-border-radius{{/unless}}
+            {{#if isPage}} cornered-header{{/if}}">
+
+                <div class="post-header-text 
+                {{#match @custom.post_header_type "Narrow"}}narrow-container{{/match}}
+                {{#unless feature_image}} narrow-container {{#if isPage}} section-padding-bottom-smaller{{/if}}{{/unless}}
+                {{#match @custom.post_header_type "Vertical"}}{{#if feature_image}} vertical-extra-margin{{/if}}{{/match}}">
+                    {{#if isPost}}
+                        <div class="subtitle-text subtitle-text-wrapper{{#if @custom.use_page_load_animations}} vertical-animation{{/if}}">
+                            {{#foreach tags limit=2}}               
+                                <a class="link-hover-animation" href="{{this.url}}">
+                                    {{this.name}}
+                                </a>                                        
+                                <div class="circle-separator"></div>            
+                            {{/foreach}}
+                        </div> 
+                    {{/if}}
+
+                    <h1 class="post-title{{#if @custom.use_page_load_animations}} vertical-animation{{/if}}">{{title}}</h1>
+
+                    {{#if custom_excerpt}}
+                        <div class="post-excerpt{{#if @custom.use_page_load_animations}} vertical-animation{{/if}}">
+                            <p>{{custom_excerpt}}</p>
+                        </div>
+                    {{/if}}
+
+                    {{#if isPost}}
+                        {{> "components/metadata" }}
+                    {{/if}}
+                </div>
+
+                {{#if feature_image}}
+                    {{#match @custom.post_header_type "Vertical"}}
+                        <div class="post-main-image-vertical">
+                            <div class="post-main-image-overlay"></div>
+                            <figure>
+                                <img
+                                    class="{{#if @custom.use_page_load_animations}} vertical-animation{{/if}}"
+                                    srcset="{{img_url feature_image size="s"}} 300w,
+                                            {{img_url feature_image size="m"}} 720w,
+                                            {{img_url feature_image size="l"}} 960w,
+                                            {{img_url feature_image size="xl"}} 1200w,
+                                            {{img_url feature_image size="xxl"}} 2000w"
+                                    src="{{img_url feature_image size="xl"}}"
+                                    alt="{{title}}"
+                                >
+                                {{#if feature_image_caption}}
+                                    <figcaption>{{feature_image_caption}}</figcaption>
+                                {{/if}}
+                            </figure>
+                        </div>
+                    {{else}}                
+                        <div class="post-main-image {{#match @custom.post_header_type "Narrow"}}narrow-container{{/match}}">
+                            <div class="post-main-image-overlay"></div>
+                            <figure class="{{#if @custom.use_page_load_animations}}vertical-animation{{/if}}">
+                                <img
+                                    srcset="{{img_url feature_image size="s"}} 300w,
+                                            {{img_url feature_image size="m"}} 720w,
+                                            {{img_url feature_image size="l"}} 960w,
+                                            {{img_url feature_image size="xl"}} 1200w,
+                                            {{img_url feature_image size="xxl"}} 2000w"
+                                    src="{{img_url feature_image size="xl"}}"
+                                    alt="{{title}}"
+                                >
+                                {{#if feature_image_caption}}
+                                    <figcaption>{{feature_image_caption}}</figcaption>
+                                {{/if}}
+                            </figure>
+                        </div>               
+                    {{/match}}
+                {{/if}}
+            </header>
+            <script>
+                setLightLogo();
+            </script>
+        {{/match}}
+    {{/match}}
+
+    <section class="{{#if isPost}}section-padding-bottom-bigger{{/if}} post-content narrow-container {{#unless @page.show_title_and_feature_image}} section-margin-top{{/unless}}{{#if @custom.use_page_load_animations}} hidden-post-content{{/if}}">
+        {{content}}
+        
+        {{#if isPost}}
+            {{#if access}}
+                <div class="post-share-container">
+                    <div class="subtitle-text">{{t "Share this post"}}</div>
+                    <div class="post-share-icons">
+                        <a href="https://www.facebook.com/sharer.php?u={{url absolute='true'}}" target="_blank" rel="noopener" class="social link-hover-animation" aria-label="Share on Facebook">
+                            <div class="social-inner-share">
+                                {{> "icons/facebook-icon"}}
+                            </div>
+                        </a>
+
+                        <a href="https://twitter.com/intent/tweet?url={{url absolute='true'}}&amp;text={{encode title}}" target="_blank" rel="noopener" class="social link-hover-animation" aria-label="Share on Twitter">
+                            <div class="social-inner-share">
+                                {{> "icons/twitter-icon"}}
+                            </div>
+                        </a>
+
+                        <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url={{url absolute='true'}}&amp;title={{encode title}}" target="_blank" rel="noopener" class="social link-hover-animation" aria-label="Share on Linkedin">
+                            <div class="smaller-social-inner-share">
+                                {{> "icons/linkedin-icon"}}
+                            </div>
+                        </a>
+
+                        <button class="social clipboard-link unstyled-button link-hover-animation" aria-label="Copy Link">
+                            <div class="social-inner-share">
+                                {{> "icons/link-icon"}}
+                            </div>
+                        </button>
+
+                        <div class="clipboard-alert">
+                            <small>{{t "The link has been copied!"}}</small>
+                        </div>
+                    </div>
+                </div>
+            {{/if}}
+        {{/if}}
+    </section>
+
+    {{#if isPost}}
+        <footer>      
+            {{#if comments}}    
+                <div class="narrow-container">
+                    <div class="section-header">
+                        <div class="subtitle-text">{{t "Members discussion"}}</div>
+                        <div class="subtitle-line"></div>
+                    </div>
+                </div>                      
+                <div class="comments-container">
+                    {{comments title="" count=false}}
+                </div>                   
+            {{/if}}
+
+            <div class="related-posts">
+                {{#prev_post}}
+                    {{> "components/related-card" heading=(t "Previous post")}}
+                {{/prev_post}}
+            
+                {{#next_post}}
+                    {{> "components/related-card" heading=(t "Next post") class="next-post"}}
+                {{/next_post}}               
+            </div>
+
+            {{#get 'posts' include='tags,authors' limit='6' filter='id:-{{id}}+tag:[{{primary_tag.slug}}]' as |related|}}
+                {{#if related}}
+                    <div class="wide-container section-padding no-padding-bottom">
+                        <div class="section-header">
+                            <div class="subtitle-text">{{t "You might also like"}}</div>
+                            <div class="subtitle-line"></div>
+                        </div>
+                    </div>
+                    <div class="small-cards-grid-outer">
+                        <div class="small-cards-grid">
+                            {{#foreach related}}
+                                {{> "components/small-card" isPost=true}}
+                            {{/foreach}}
+                        </div>                         
+                    </div>
+                {{/if}}
+            {{/get}}
+        </footer>
+    {{/if}}
+</article>
+
+<script src="https://cdn.jsdelivr.net/npm/lightense-images@1.0.17/dist/lightense.min.js"></script>
+<script>
+    setLigtense();
+</script>
+
+<script src="{{asset "js/post-content.js"}}"></script>
+
+{{#if isPost}}
+    {{#if access}}
+        <script>
+            copyUrlToClipboard("post-share-icons");
+
+            window.addEventListener("load", () => {
+                const iframe = document.querySelector('#ghost-comments-root iframe');
+                if(!iframe) return;
+                
+                var iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+                var targetHead = iframe.contentDocument.head;
+
+                var newLink = document.createElement("link");
+                newLink.setAttribute("rel", "stylesheet");
+                newLink.setAttribute("type", "text/css");
+                newLink.setAttribute("href", "{{asset 'css/comments.css'}}");
+
+                let section = iframeDoc.querySelector('section');
+                section.id = "comments-section"
+
+                const rootStyles = getComputedStyle(document.documentElement);
+
+                //initial variables
+                iframeDoc.documentElement.style.setProperty('--text-color1', rootStyles.getPropertyValue('--text-color1'))
+                iframeDoc.documentElement.style.setProperty('--text-color1-40-opacity', rootStyles.getPropertyValue('--text-color1-40-opacity'))
+                iframeDoc.documentElement.style.setProperty('--text-color2', rootStyles.getPropertyValue('--text-color2'))
+                iframeDoc.documentElement.style.setProperty('--background-color1', rootStyles.getPropertyValue('--background-color1'))
+                iframeDoc.documentElement.style.setProperty('--background-color', rootStyles.getPropertyValue('--background-color'))
+                iframeDoc.documentElement.style.setProperty('--font1', rootStyles.getPropertyValue('--font1'))
+
+                targetHead.appendChild(newLink);
+                loadFonts("{{@custom.primary_font}}", "{{@custom.secondary_font}}", iframeDoc);
+            });
+        </script>
+    {{/if}}
+{{/if}}

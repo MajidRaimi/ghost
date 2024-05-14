@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="{{@site.locale}}">
+    <head>
+        <title>{{meta_title}}</title>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="HandheldFriendly" content="True" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>  
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
+        <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+
+        <link rel="stylesheet" type="text/css" href="{{asset "css/global.css"}}" />
+        <script src="{{asset "js/global.js"}}"></script>
+        <script>
+            loadFonts("{{@custom.primary_font}}", "{{@custom.secondary_font}}");
+        </script>
+
+        {{#if @custom.use_page_load_animations}}
+            <script>
+                setSliderInitialAnimations();
+                document.addEventListener("DOMContentLoaded", () => {
+                    pageLoadAnimations();
+                }); 
+            </script>
+        {{else}}
+            <script>
+                document.addEventListener("DOMContentLoaded", () => {
+                    setSliderInitialAnimations();
+                });             
+            </script>
+        {{/if}}
+
+        {{#match @custom.color_scheme "Elegant"}}
+            <style>
+                :root {
+                    --background-color1: #FFFFFF;
+                    --background-color2: #F2F1EF;
+                    --text-color1: #222222;
+                    --text-color1-20-opacity: #22222233;
+                    --text-color1-40-opacity: #22222266;
+                    --text-color2: #222222;
+                    --text-color2-20-opacity: #22222233;
+                    --text-color2-40-opacity: #22222266;
+                    --background-color: #D8D6D2;
+                }
+            </style>
+        {{/match}}
+
+        {{#match @custom.color_scheme "Light"}}
+            <style>
+                :root {
+                    --background-color1: #FFFFFF;
+                    --background-color2: #F9F9F9;
+                    --text-color1: #222222;
+                    --text-color1-20-opacity: #22222233;
+                    --text-color1-40-opacity: #22222266;
+                    --text-color2: #222222;
+                    --text-color2-20-opacity: #22222233;
+                    --text-color2-40-opacity: #22222266;
+                    --background-color: #ECECEC;
+                }
+            </style>
+        {{/match}}
+
+        {{#match @custom.color_scheme "Dark"}}
+            <style>
+                :root {
+                    --background-color1: #FFFFFF;
+                    --background-color2: #080808;
+                    --text-color1: #080808;
+                    --text-color1-20-opacity: #08080833;
+                    --text-color1-40-opacity: #08080866;
+                    --text-color2: #FFFFFF;
+                    --text-color2-20-opacity: #FFFFFF33;
+                    --text-color2-40-opacity: #FFFFFF66;
+                    --background-color: #1b1b1b;
+                }
+            </style>
+        {{/match}}
+
+        {{#match @custom.color_scheme "Shadow"}}
+            <style>
+                :root {
+                    --background-color1: #F0EAE1;
+                    --background-color2: #222222;
+                    --text-color1: #222222;
+                    --text-color1-20-opacity: #22222233;
+                    --text-color1-40-opacity: #22222266;
+                    --text-color2: #F0EAE1;
+                    --text-color2-20-opacity: #F0EAE133;
+                    --text-color2-40-opacity: #F0EAE166;
+                    --background-color: #2B2B2B;
+                }
+            </style>
+        {{/match}}
+
+        {{#match @custom.color_scheme "Vibrant"}}
+            <style>
+                :root {
+                    --background-color1: #EBE2D3;
+                    --background-color2: #CB2D24;
+                    --text-color1: #CB2D24;
+                    --text-color1-20-opacity: #CB2D2433;
+                    --text-color1-40-opacity: #CB2D2466;
+                    --text-color2: #EBE2D3;
+                    --text-color2-20-opacity: #EBE2D333;
+                    --text-color2-40-opacity: #EBE2D366;
+                    --background-color: #CA4139;
+                }
+            </style>
+        {{/match}}
+
+        <style>
+            :root {
+                    --font1: '{{@custom.primary_font}}', sans-serif;
+                    --font2: '{{@custom.secondary_font}}', sans-serif;
+                    --logo-scale: {{@custom.logo_scale}};
+            }
+
+            @media (min-width: 1920px) {
+                :root{
+                    --scale: 0.8;
+                }
+            }
+        </style>
+
+        {{!-- Always last --}}
+        {{ghost_head}}
+    </head>
+    <body>
+        <div class="viewport">
+            <div class="site-content">
+                <div class="site-main">
+                    {{> "components/navbar" }}
+                    {{{body}}}
+                    {{> "components/footer" }}
+                </div>
+            </div>
+        </div>
+
+        {{> "components/notifications"}}
+
+        {{!-- Demo content --}}
+        {{#match @site.url "http://localhost:2368"}}
+            {{> "components/demo"}}
+        {{/match}}
+
+        {{#match @site.url "https://circular.kusa-projects.com"}}
+            {{> "components/demo"}}
+        {{/match}}
+
+        <script>
+            secondLevelMenu();
+            setNavigation();
+            setNotification();
+            setToggle();
+        </script>
+
+        <script src="{{asset "js/custom-elements.js"}}"></script>
+
+        {{!-- Always last --}}
+        {{ghost_foot}}
+    </body>
+</html>

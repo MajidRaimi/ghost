@@ -1,0 +1,55 @@
+<link rel="stylesheet" type="text/css" href="{{asset "css/card.css"}}" />
+<link rel="stylesheet" type="text/css" href="{{asset "css/small-card.css"}}" />
+<link rel="stylesheet" type="text/css" href="{{asset "css/hero.css"}}" />
+
+{{!< default}}
+
+<main>
+    {{#get "posts" include="tags" limit=@custom.number_of_posts_on_slider}}
+        {{#if posts}}
+            {{> "components/slider" items=posts}}
+        {{/if}} 
+    {{/get}}
+
+    {{#get "posts" filter="featured:true" include="tags" limit="all"}}
+        {{#if posts}}
+            {{> "components/featured-posts" }}
+        {{/if}} 
+    {{/get}}
+
+    <section id="latest-posts" class="latest-posts section-padding background-color">
+        <div class="wide-container">
+            <div class="section-header">
+                {{!-- <div class="subtitle-text">{{t "Latest posts"}}</div> --}}
+                <div class="subtitle-line light-subtitle-line"></div>
+            </div>
+            <div class="grid pagination-grid">
+                {{#foreach posts}}
+                    {{> "components/card" }}
+                {{/foreach}}
+            </div>
+            {{pagination}}  
+        </div>        
+    </section> 
+
+    {{#get "tags" include='count.posts' limit="6"}}
+        {{#if tags}}
+            <section class="small-cards-section small-cards-at-footer">
+                    <div class="wide-container">
+                        <div class="section-header">
+                            <div class="subtitle-text">{{t "Popular tags"}}</div>
+                            <div class="subtitle-line light-subtitle-line"></div>
+                        </div>
+                    </div>
+                    <div class="small-cards-grid-outer">
+                        <div class="small-cards-grid">
+                            {{#foreach tags}}
+                                {{> "components/small-card" }}
+                            {{/foreach}}
+                        </div>
+                    </div>
+                <div class="small-cards-overlay{{#unless @custom.use_rounded_corners_on_desktop_background_overlays}} no-border-radius{{/unless}}"></div>
+            </section> 
+        {{/if}}
+    {{/get}}
+</main>

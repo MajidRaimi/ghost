@@ -1,0 +1,345 @@
+.membership-hero {
+    background-color: var(--background-color2);
+    padding-top: calc(9vw * var(--scale));
+}
+
+.membership-hero h1,
+.membership-hero p {
+    color: var(--text-color2);
+}
+
+.hero-text-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 3vw;
+    text-align: center;
+}
+
+.hero-paragraph-wrapper {
+    max-width: 606px;
+    margin-top: calc(1.7vw * var(--scale));
+}
+
+.membership-section-outer {
+    position: relative;
+    overflow: hidden;
+}
+
+.membership-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: calc(3.2vw * var(--scale));
+}
+
+.membership-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--background-color1);
+    border: 1px solid var(--text-color1-20-opacity);
+    border-radius: 100px;
+    padding: 10px;
+    gap: 10px;
+}
+
+.membership-button {
+    min-width: 124px;
+    border: none;
+    background-color: var(--background-color2);
+    color: var(--text-color2);
+    font-weight: 600;
+}
+
+.membership-button[data-inactive="true"] {
+    background-color: var(--background-color1);
+    color: var(--text-color1);
+}
+
+.membership-tiers[data-inactive="true"] {
+    display: none;
+}
+
+.tiers-wrapper {
+    width: 100%;
+}
+
+.membership-tiers {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.tier-card {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    width: calc(33.333% - 3.6vw);
+    background-color: var(--background-color1);
+    padding: 52px 24px 62px 24px;
+    border: 1px solid var(--text-color1-20-opacity);
+    color: var(--text-color1);
+    border-radius: 20px;
+    margin-left: 1.8vw;
+    margin-right: 1.8vw;
+    margin-top: 3.6vw;
+}
+
+.tier-name {
+    padding: 4px 21px;
+    border-radius: 100px;
+    background-color: var(--background-color2);
+}
+
+.tier-name p {
+    color: var(--text-color2);
+}
+
+.tier-price {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    margin-top: calc(3vw * var(--scale));
+    margin-bottom: calc(2.4vw * var(--scale));
+}
+
+.tier-name p, .tier-price p {
+    font-weight: 600;
+}
+
+.tier-price-span {
+    font-family: var(--font2);
+    font-weight: 600;
+    line-height: 85%;
+    font-size: calc(5.7vw * var(--scale));
+}
+
+.tier-description {
+    margin-bottom: calc(2.3vw * var(--scale));
+}
+
+.benefits-outer {
+    width: 100%;
+    border-top: 1px solid var(--text-color1-40-opacity);
+}
+
+.benefits-container {
+    display: flex;
+    flex-direction: column;
+    row-gap: calc(1.6vw * var(--scale));
+    margin-top: calc(3vw * var(--scale));
+}
+
+.benefits-item {
+    display: flex;
+}
+
+.benefit-square {
+    background-color: var(--background-color);
+    width: 25px;
+    height: 25px;
+    min-width: 25px;
+    min-height: 25px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: calc(1.1vw * var(--scale));
+}
+
+.benefit-icon {
+    width: 21px;
+    height: 21px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.membership-subscribe-button {
+    margin-top: calc(5vw * var(--scale));
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    position: relative;
+    z-index: 2;
+}
+
+.membership-subscribe-button a {
+    width: 100%;
+    font-weight: 600;
+    font-size: 18px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+
+.membership-overlay {
+    position: absolute;
+    top:-2px;
+    right: 0;
+    left: 0;
+    height: 50vh;
+    background-color: var(--background-color2);
+    z-index: -1;
+    border-radius: 0px 0px calc(3.5vw * var(--scale)) calc(3.5vw * var(--scale));
+}
+
+.faq-wrapper {
+    display: flex;
+    flex-direction: column;
+    row-gap: calc(1.45vw * var(--scale));
+}
+
+/* Styles for large desktop */
+@media (min-width: 1439px) { 
+    .hero-paragraph-wrapper {
+        max-width: calc(42vw * var(--scale));
+    }
+    
+    .membership-buttons {
+        padding: calc(0.7vw * var(--scale));
+        gap: calc(0.7vw * var(--scale));
+    }
+    
+    .membership-button {
+        min-width: calc(8.6vw * var(--scale));
+    }
+    
+    .tier-card {
+        padding: 3.6vw 1.67vw 4vw 1.67vw;
+        border-radius: calc(1.4vw * var(--scale));
+        margin-left: 1.8vw;
+        margin-right: 1.8vw;
+        margin-top: 3.6vw;
+    }
+    
+    .tier-name {
+        padding: calc(0.3vw * var(--scale)) calc(1.5vw * var(--scale));
+    }
+    
+    .benefit-square {
+        width: calc(1.7vw * var(--scale));
+        height: calc(1.7vw * var(--scale));
+        min-width: calc(1.7vw * var(--scale));
+        min-height: calc(1.7vw * var(--scale));
+        border-radius: calc(0.4vw * var(--scale));
+    }
+    
+    .benefit-icon {
+        width: calc(1.46vw * var(--scale));
+        height: calc(1.46vw * var(--scale));
+    }
+    
+    .membership-subscribe-button a {
+        font-size: calc(1.25vw * var(--scale));
+        padding-top: calc(0.8vw * var(--scale));
+        padding-bottom: calc(0.8vw * var(--scale));
+    }
+}
+
+/* Styles for tablet */
+@media (max-width: 991px) {
+    .membership-hero {
+        padding: 100px 30px 0px 30px;
+    }
+    
+    .hero-text-content {
+        margin-top: 60px;
+        padding-top: 24px;
+    }
+
+    .membership-overlay {
+        border-radius: 0px;
+    }
+    
+    .hero-paragraph-wrapper {
+        margin-top: 18px;
+    }
+    
+    .membership-section {
+        padding-top: 38px;
+    }
+    
+    .membership-buttons {
+        padding: 8px;
+        gap: 8px;
+    }
+
+    .tier-card {
+        width: 100%;
+        max-width: 400px;
+        border-radius: 15px;
+        margin-left: 0px;
+        margin-right: 0px;
+        margin-top: 36px;
+    }
+    
+    .tier-name {
+        padding: 4px 21px;
+    }
+    
+    .tier-price {
+        margin-top: 40px;
+        margin-bottom: 32px;
+    }
+    
+    .tier-price-span {
+        font-size: 72px;
+    }
+    
+    .tier-description {
+        margin-bottom: 32px;
+    }
+
+    .benefit-square {
+        margin-right: 12px;
+    }
+    
+    .benefits-container {
+        row-gap: 16px;
+        margin-top: 40px;
+    }
+    
+    .membership-subscribe-button {
+        margin-top: 74px;
+    }
+}
+
+/* Styles for mobile */
+@media (max-width: 479px) {
+    .membership-hero {
+        padding: 80px 18px 0px 18px;
+    }
+    
+    .hero-text-content {
+        margin-top: 40px;
+        padding-top: 0px;
+    }
+
+    .benefit-square {
+        width: 23px;
+        height: 23px;
+        min-width: 23px;
+        min-height: 23px;
+    }
+    
+    .benefit-icon {
+        width: 19px;
+        height: 19px;
+    }
+
+    .membership-button {
+        min-width: 110px;
+    }
+
+    .membership-subscribe-button a {
+        width: 100%;
+        font-size: 16px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+}

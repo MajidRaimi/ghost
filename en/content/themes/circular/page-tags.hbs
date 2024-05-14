@@ -1,0 +1,36 @@
+<link rel="stylesheet" type="text/css" href="{{asset "css/small-card.css"}}" />
+<link rel="stylesheet" type="text/css" href="{{asset "css/hero.css"}}" />
+<link rel="stylesheet" type="text/css" href="{{asset "css/hero-secondary.css"}}" />
+
+{{!< default}}
+
+<main>
+    {{#post}}
+        {{#if @custom.use_slider_hero_section_in_secondary_pages}}
+            {{#get "tags" limit="all" include='count.posts'}}
+                {{> "components/slider" items=tags}}
+            {{/get}}
+        {{else}}
+            {{> "components/hero" description=excerpt}}
+        {{/if}}
+    {{/post}}
+    {{#unless @custom.use_slider_hero_section_in_secondary_pages}}
+        {{#get "tags" limit="all" include='count.posts'}}
+            <section class="small-cards-section section-padding no-padding-bottom{{#if @custom.use_page_load_animations}} hidden-animation{{/if}}">
+                <div class="wide-container">
+                    <div class="section-header">
+                        <div class="subtitle-text">{{t "Popular tags"}}</div>
+                        <div class="subtitle-line"></div>
+                    </div>
+                </div>
+                <div class="small-cards-grid-outer tags-grid-outer">
+                    <div class="small-cards-grid">
+                        {{#foreach tags}}
+                            {{> "components/small-card" }}
+                        {{/foreach}}
+                    </div>
+                </div>
+            </section> 
+        {{/get}}
+    {{/unless}}
+</main>

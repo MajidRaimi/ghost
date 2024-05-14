@@ -1,0 +1,132 @@
+<link rel="stylesheet" type="text/css" href="{{asset "css/footer.css"}}" />
+
+<footer>
+    <div class="wide-container">
+        <div class="footer-container section-padding">
+            <div class="footer-text-content-outer">
+                <div class="footer-text-content">
+                    <div class="footer-logo-wrapper">
+                        <a class="footer-logo" href="{{@site.url}}">
+                            {{#if @site.logo}}
+                                <img src="{{@site.logo}}" alt="{{@site.title}}">
+                            {{else}}
+                                <div class="big-text">
+                                    {{@site.title}}
+                                </div>                       
+                            {{/if}}
+                        </a>
+                    </div>
+                    <div class="footer-paragraph-wrapper">
+                        <p>{{@site.description}}</p>
+                    </div>
+                    {{#if @site.members_enabled}}
+                        {{#unless @site.members_invite_only}}
+                            {{#unless @member}}
+                                <form data-members-form="subscribe" class="subscribe-form">
+                                    <div class="subscribe-with-alerts">
+                                        <div class="subscribe-wrapper">
+                                            <input data-members-email type="email" required="true" placeholder="{{t 'Your.email@example.com'}}" class="subscribe-input"/>
+                                            <button class="subscribe-button button" type="submit" aria-label="Submit">
+                                                <div class="footer-arrow-icon">
+                                                    {{> "icons/arrow-icon" }}
+                                                </div>
+                                            </button>
+                                        </div>
+                                        <div class="subscribe-alerts">
+                                            <small class="subscribe-alert loading-alert">{{t "Processing your request..."}}</small>
+                                            <small class="subscribe-alert success-alert">{{t "Please check your inbox and click the link to confirm your subscription."}}</small>
+                                            <small class="subscribe-alert error-alert" data-members-error></small>
+                                        </div> 
+                                    </div>            
+                                </form>
+                            {{/unless}}
+                        {{/unless}}
+                    {{/if}}
+                </div>
+            </div>
+
+            <div class="footer-links-content">
+                <nav class="footer-navigation">                   
+                    <ul class="footer-social-links-group footer-links-group">
+                        <li class="footer-nav-navigation">
+                            <div class="footer-links-label medium-text">
+                                {{t "Social"}}
+                            </div>
+                            <ul class="footer-secondary-links footer-social-links">
+                                <li>
+                                    <a href="{{facebook_url @site.facebook}}" target="_blank" class="social footer-nav-link" aria-label="Facebook">
+                                        <div class="social-inner">
+                                            {{> "icons/facebook-icon"}}
+                                        </div>
+                                        {{t "Facebook"}}
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="{{twitter_url @site.twitter}}" target="_blank" class="social footer-nav-link" aria-label="Twitter">
+                                        <div class="social-inner">
+                                            {{> "icons/twitter-icon"}}
+                                        </div>
+                                        {{t "Twitter"}}
+                                    </a>
+                                </li>
+
+                                {{#if @custom.pinterest_url}}
+                                    <li>
+                                        <a href="{{@custom.pinterest_url}}" target="_blank" class="social footer-nav-link" aria-label="Pinterest">
+                                            <div class="social-inner">
+                                                {{> "icons/pinterest-icon"}}
+                                            </div>
+                                            {{t "Pinterest"}}
+                                        </a>
+                                    </li>
+                                {{/if}}
+
+                                {{#if @custom.linkedin_url}}
+                                    <li>
+                                        <a href="{{@custom.linkedin_url}}" target="_blank" class="social footer-nav-link" aria-label="Linkedin">
+                                            <div class="smaller-social-inner">
+                                                {{> "icons/linkedin-icon"}}
+                                            </div>
+                                            {{t "Linkedin"}}
+                                        </a>
+                                    </li>
+                                {{/if}}
+
+                                {{#if @custom.instagram_url}}
+                                    <li>
+                                        <a href="{{@custom.instagram_url}}" target="_blank" class="social footer-nav-link" aria-label="Instagram">
+                                            <div class="smaller-social-inner">
+                                                {{> "icons/instagram-icon"}}
+                                            </div>
+                                            {{t "Instagram"}}
+                                        </a>
+                                    </li>
+                                {{/if}}
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <ul class="footer-normal-links-group footer-links-group">
+                        <li class="footer-nav-navigation">
+                            <div class="footer-links-label medium-text">
+                                {{t "Navigation"}}
+                            </div>
+                            <ul class="footer-secondary-links footer-normal-links">
+
+                            </ul>
+                        </li>
+                    </ul>
+
+                    {{navigation type="secondary" }}
+                </nav>
+            </div>
+        </div>
+
+        <div class="footer-credits">
+            <span class="footer-credits-inner">
+                <span>&copy; {{date format="YYYY"}}&nbsp;</span><a class="link-hover-animation inline-flex" href="{{@site.url}}">{{@site.title}}</a><span>&nbsp;- {{t "Published with"}}&nbsp;</span><a class="link-hover-animation inline-flex" href="https://ghost.org/" target="_blank">Ghost</a><span>&nbsp;&&nbsp;</span><a class="link-hover-animation inline-flex" href="https://www.kusa-projects.com/" target="_blank">{{@site.title}}</a>
+            </span>
+        </div>
+    </div>
+</footer>
